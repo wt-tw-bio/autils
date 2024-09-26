@@ -1,0 +1,20 @@
+Package: autils
+Title: Mendelian Randomization Toolkit
+Version: 0.4.0
+Authors@R: 
+    person("Fan", "Xing", , "fanxingfu3344@gmail.com", role = c("aut", "cre"))
+Description: An R package providing a comprehensive toolkit for Mendelian
+    Randomization studies. This package includes a collection of functions
+    for batch variable selection, data processing, and analysis to
+    streamline research workflows and ensure robust and reliable results.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    crayon,
+    httr,
+    readr,
+    withr
+LitrVersionUsed: 0.9.2
+LitrId: 1766f01f580bedf5f5d4db9ed50b1b7d
