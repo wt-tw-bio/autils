@@ -19,6 +19,18 @@ check_expr(expr_matrix, species = NULL, housekeeping_genes = NULL)
 \description{
 对基因表达矩阵进行全面检查，包括数据类型、质量、分布特征等，并提供详细的分析建议。
 }
+\examples{
+# 安装并加载必要的包
+# install.packages("impute")
+# install.packages("matrixStats")
+
+# 示例代码
+cars
+autils::check_expr(cars)
+
+iris
+autils::check_expr(iris)
+}
 \author{
 Fan Xingfu
 }

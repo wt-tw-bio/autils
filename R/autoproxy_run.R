@@ -18,7 +18,6 @@
 #'   httr::GET("https://api.github.com/users/hadley")
 #' }, proxy_ports = c(1086, 7890))
 autoproxy_run <- function(f, proxy_ports = c(1086, 7890)) {
-
   cat(cyan$bold("✿ 准备使用代理执行指定的函数...\n"))
 
   # 定义一个内部函数来测试代理并执行用户函数
@@ -51,15 +50,15 @@ autoproxy_run <- function(f, proxy_ports = c(1086, 7890)) {
       {
         res <- f()
         cat(green$bold("❀ 函数执行成功！\n"))
-        res  # 返回结果
+        res # 返回结果
       },
       error = function(e) {
         cat(red$bold("✿ 函数执行出错："), e$message, "\n")
-        NULL  # 返回空结果
+        NULL # 返回空结果
       },
       warning = function(w) {
         cat(yellow$bold("❀ 警告："), w$message, "\n")
-        invokeRestart("muffleWarning")  # 忽略警告继续执行
+        invokeRestart("muffleWarning") # 忽略警告继续执行
       }
     )
     return(result)
@@ -89,4 +88,3 @@ autoproxy_run <- function(f, proxy_ports = c(1086, 7890)) {
   cat(cyan$bold("❀ 已恢复之前的代理设置。\n"))
   return(result)
 }
-

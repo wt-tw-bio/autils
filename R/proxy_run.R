@@ -19,11 +19,11 @@
 #' @importFrom crayon red green blue yellow
 #' @author Fan Xingfu
 #' @export
-proxy_run <-  function(f, http_proxy = "http://localhost:1086", https_proxy = "http://localhost:1086") {
+proxy_run <- function(f, http_proxy = "http://localhost:1086", https_proxy = "http://localhost:1086") {
   necessary_packages <- c("crayon", "withr", "httr", "xml2")
   installed_packages <- rownames(installed.packages())
-  for(pkg in necessary_packages) {
-    if(!pkg %in% installed_packages) {
+  for (pkg in necessary_packages) {
+    if (!pkg %in% installed_packages) {
       install.packages(pkg)
     }
   }
@@ -39,7 +39,7 @@ proxy_run <-  function(f, http_proxy = "http://localhost:1086", https_proxy = "h
       proxy_test <- tryCatch(
         {
           test_response <- httr::GET("https://api.github.com/users/hadley")
-          if(test_response$status_code != 200) {
+          if (test_response$status_code != 200) {
             stop("代理测试失败，无法访问目标网址。")
           }
           cat(green$bold("代理测试成功，能够访问互联网。\n"))
@@ -56,15 +56,15 @@ proxy_run <-  function(f, http_proxy = "http://localhost:1086", https_proxy = "h
         {
           res <- f()
           cat(green$bold("函数执行成功！\n"))
-          res  # 返回结果
+          res # 返回结果
         },
         error = function(e) {
           cat(red$bold("函数执行出错："), e$message, "\n")
-          NULL  # 返回空结果
+          NULL # 返回空结果
         },
         warning = function(w) {
           cat(yellow$bold("警告："), w$message, "\n")
-          invokeRestart("muffleWarning")  # 忽略警告继续执行
+          invokeRestart("muffleWarning") # 忽略警告继续执行
         }
       )
     }
@@ -74,5 +74,3 @@ proxy_run <-  function(f, http_proxy = "http://localhost:1086", https_proxy = "h
 
   return(result)
 }
-
-

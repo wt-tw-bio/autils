@@ -20,7 +20,7 @@
 group_by_median <- function(data, column_name) {
   data[[paste0(column_name, "_group")]] <- ifelse(
     data[[column_name]] > median(data[[column_name]], na.rm = TRUE),
-    'high', 'low'
+    "high", "low"
   )
   return(data)
 }

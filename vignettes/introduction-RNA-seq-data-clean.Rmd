@@ -1,0 +1,30 @@
+---
+title: "introduction-RNA-seq-data-clean"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction-RNA-seq-data-clean}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(autils)
+```
+
+```{r}
+cars
+autils::check_expr(cars)
+```
+
+```{r}
+iris
+
+autils::check_expr(iris)
+```
