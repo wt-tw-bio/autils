@@ -15,6 +15,14 @@ Imports:
     crayon,
     httr,
     readr,
-    withr
+    withr,
+    dplyr, 
+    ggplot2, 
+    impute, 
+    matrixStats, 
+    rlang, 
+    tibble,
+    WGCNA, 
+    xml2
 LitrVersionUsed: 0.9.2
 LitrId: 1766f01f580bedf5f5d4db9ed50b1b7d
