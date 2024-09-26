@@ -16,8 +16,10 @@ knitr::opts_chunk$set(
 # autils
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/wt-tw-bio/autils/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/wt-tw-bio/autils/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/wt-tw-bio/autils/branch/main/graph/badge.svg)](https://app.codecov.io/gh/wt-tw-bio/autils?branch=main)
+
 <!-- badges: end -->
 
 The goal of autils is to ...
@@ -26,7 +28,7 @@ The goal of autils is to ...
 
 You can install the development version of autils from [GitHub](https://github.com/) with:
 
-``` r
+```r
 # install.packages("devtools")
 devtools::install_github("wt-tw-bio/autils")
 ```
@@ -46,12 +48,13 @@ What is special about using `README.Rmd` instead of just `README.md`? You can in
 summary(cars)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r}
+cars
+autils::check_expr(cars)
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+```{r}
+iris
+
+autils::check_expr(iris)
+```

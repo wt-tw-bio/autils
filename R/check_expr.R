@@ -6,6 +6,17 @@
 #' @param species 可选参数，指定物种名称（如"human", "mouse"等），用于检查 housekeeping 基因。
 #' @param housekeeping_genes 可选参数，用于检查 housekeeping 基因。
 #' @return 无返回值，函数会在控制台打印相关检查结果和优化建议。
+#' @examples
+#' # 安装并加载必要的包
+#' # install.packages("impute")
+#' # install.packages("matrixStats")
+#'
+#' # 示例代码
+#' cars
+#' autils::check_expr(cars)
+#'
+#' iris
+#' autils::check_expr(iris)
 #' @import crayon
 #' @author Fan Xingfu
 #' @export

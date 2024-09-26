@@ -1,5 +1,3 @@
-# Generated from create-autils.rmd: do not edit by hand
-
 #' @title 数据清洗与可选插补
 #' @description 清理数据，并可选择是否使用 KNN 方法进行缺失值插补
 #' @param matrix 输入的数值矩阵
@@ -14,6 +12,7 @@
 #' 然后移除低表达（平均值低于 `mean_threshold`）和低变异（标准差低于 `sd_threshold`）的行。
 #' @usage filter_impute_invalid(matrix, row_invalid_threshold = 0.6, col_invalid_threshold = 0.8, mean_threshold = 0.05, sd_threshold = 0.01, perform_imputation = TRUE)
 #' @examples
+#'
 #' # 安装并加载必要的包
 #' # install.packages("impute")
 #' # install.packages("matrixStats")
@@ -21,10 +20,10 @@
 #' # 创建一个示例矩阵
 #' set.seed(123)
 #' data <- matrix(runif(100, 0, 1), nrow = 10)
-#' data[sample(100, 10)] <- 0    # 添加一些零值
-#' data[sample(100, 5)] <- NA    # 添加一些 NA 值
-#' data[sample(100, 5)] <- Inf   # 添加一些 Inf 值
-#' data[sample(100, 5)] <- NaN   # 添加一些 NaN 值
+#' data[sample(100, 10)] <- 0 # 添加一些零值
+#' data[sample(100, 5)] <- NA # 添加一些 NA 值
+#' data[sample(100, 5)] <- Inf # 添加一些 Inf 值
+#' data[sample(100, 5)] <- NaN # 添加一些 NaN 值
 #'
 #' # 清洗并插补数据
 #' cleaned_data <- filter_impute_invalid(data)
@@ -60,6 +59,8 @@ filter_impute_invalid <- function(matrix, row_invalid_threshold = 0.6, col_inval
 
   # 如果选择进行插补，则执行 KNN 插补
   if (perform_imputation) {
+    # 替换零值和 Inf 为 NA，以便 impute.knn 可以正常工作
+    matrix[is_invalid(matrix)] <- NA
     matrix <- impute::impute.knn(as.matrix(matrix), rowmax = 1, colmax = 1)$data
   }
 
@@ -72,4 +73,3 @@ filter_impute_invalid <- function(matrix, row_invalid_threshold = 0.6, col_inval
 
   return(matrix)
 }
-

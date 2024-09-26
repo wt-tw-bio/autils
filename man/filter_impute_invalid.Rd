@@ -31,6 +31,7 @@ filter_impute_invalid(matrix, row_invalid_threshold = 0.6, col_invalid_threshold
 然后移除低表达（平均值低于 \code{mean_threshold}）和低变异（标准差低于 \code{sd_threshold}）的行。
 }
 \examples{
+
 # 安装并加载必要的包
 # install.packages("impute")
 # install.packages("matrixStats")
@@ -38,10 +39,10 @@ filter_impute_invalid(matrix, row_invalid_threshold = 0.6, col_invalid_threshold
 # 创建一个示例矩阵
 set.seed(123)
 data <- matrix(runif(100, 0, 1), nrow = 10)
-data[sample(100, 10)] <- 0    # 添加一些零值
-data[sample(100, 5)] <- NA    # 添加一些 NA 值
-data[sample(100, 5)] <- Inf   # 添加一些 Inf 值
-data[sample(100, 5)] <- NaN   # 添加一些 NaN 值
+data[sample(100, 10)] <- 0 # 添加一些零值
+data[sample(100, 5)] <- NA # 添加一些 NA 值
+data[sample(100, 5)] <- Inf # 添加一些 Inf 值
+data[sample(100, 5)] <- NaN # 添加一些 NaN 值
 
 # 清洗并插补数据
 cleaned_data <- filter_impute_invalid(data)
