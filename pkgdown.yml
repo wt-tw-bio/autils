@@ -1,5 +1,6 @@
 pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2024-09-26T08:13Z
+articles:
+  introduction-RNA-seq-data-clean: introduction-RNA-seq-data-clean.html
+last_built: 2024-09-26T08:30Z

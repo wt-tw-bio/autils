@@ -5,14 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mendelian Randomization Toolkit • autils</title>
+<title>introduction-RNA-seq-data-clean • autils</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Mendelian Randomization Toolkit">
-<meta property="og:description" content="An R package providing a comprehensive toolkit for Mendelian Randomization studies. This package includes a collection of functions for batch variable selection, data processing, and analysis to streamline research workflows and ensure robust and reliable results.">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="introduction-RNA-seq-data-clean">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -21,7 +20,7 @@
 <body data-spy="scroll" data-target="#toc">
 
 
-    <div class="container template-home">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -32,7 +31,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">autils</a>
+        <a class="navbar-link" href="../index.html">autils</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
@@ -40,7 +39,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,7 +49,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/introduction-RNA-seq-data-clean.html">introduction-RNA-seq-data-clean</a>
+      <a href="../articles/introduction-RNA-seq-data-clean.html">introduction-RNA-seq-data-clean</a>
     </li>
   </ul>
 </li>
@@ -66,45 +65,26 @@
 
 
       </header><div class="row">
-  <div class="contents col-md-9">
-<div class="section level1">
-<div class="page-header"><h1 id="autils">autils<a class="anchor" aria-label="anchor" href="#autils"></a>
-</h1></div>
-<!-- badges: start -->
+  <div class="col-md-9 contents">
+    <div class="page-header toc-ignore">
+      <h1 data-toc-skip>introduction-RNA-seq-data-clean</h1>
+            
+      
 
-<!-- badges: end -->
-<p>The goal of autils is to …</p>
-<div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
-<p>You can install the development version of autils from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+      <div class="hidden name"><code>introduction-RNA-seq-data-clean.Rmd</code></div>
+
+    </div>
+
+    
+    
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"wt-tw-bio/autils"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
-</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">autils</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: replacing previous import 'crayon::%+%' by 'ggplot2::%+%' when loading</span></span>
 <span><span class="co">#&gt; 'autils'</span></span>
 <span><span class="co">#&gt; Warning: replacing previous import 'dplyr::count' by 'matrixStats::count' when</span></span>
 <span><span class="co">#&gt; loading 'autils'</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">## basic example code</span></span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      speed           dist       </span></span>
-<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt; </span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cars</span></span>
 <span><span class="co">#&gt;    speed dist</span></span>
 <span><span class="co">#&gt; 1      4    2</span></span>
@@ -157,19 +137,19 @@
 <span><span class="co">#&gt; 48    24   93</span></span>
 <span><span class="co">#&gt; 49    24  120</span></span>
 <span><span class="co">#&gt; 50    25   85</span></span>
-<span><span class="fu">autils</span><span class="fu">::</span><span class="fu"><a href="reference/check_expr.html">check_expr</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="fu">autils</span><span class="fu">::</span><span class="fu"><a href="../reference/check_expr.html">check_expr</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 基因表达矩阵全面检查报告</span></span>
-<span><span class="co">#&gt; ============</span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; 基因表达矩阵全面检查报告</span></span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; ============</span></span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; </span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 1. 基本信息</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; -------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>数据类型: data.frame </span></span>
+<span><span class="co">#&gt; 维度: 50 x 2 ( <span style="color: #00BB00;">50</span> 个基因, <span style="color: #00BB00;">2</span> 个样本)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 1. 基本信息</span></span>
-<span><span class="co">#&gt; -------</span></span>
-<span><span class="co">#&gt; 数据类型: data.frame </span></span>
-<span><span class="co">#&gt; 维度: 50 x 2 ( 50 个基因, 2 个样本)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 2. 数据类型和结构检查</span></span>
-<span><span class="co">#&gt; ------------</span></span>
-<span><span class="co">#&gt; 检测到行名，假定为基因ID。</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 2. 数据类型和结构检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ------------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>检测到行名，假定为基因ID。</span></span>
 <span><span class="co">#&gt; 检测到列名，假定为样本ID。</span></span>
 <span><span class="co">#&gt; ------------</span></span>
 <span><span class="co">#&gt; 基因名检查通过，无重复。</span></span>
@@ -180,10 +160,10 @@
 <span><span class="co">#&gt; 无全为NA的行。</span></span>
 <span><span class="co">#&gt; 无全为NA的列。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 3. 数据分布检查</span></span>
-<span><span class="co">#&gt; ---------</span></span>
-<span><span class="co">#&gt; 检测到 counts 矩阵。</span></span>
-<span><span class="co">#&gt; 该矩阵适合用于 DESeq2 或 edgeR 进行差异表达分析。</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 3. 数据分布检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ---------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span><span style="color: #00BB00;">检测到 counts 矩阵。</span></span></span>
+<span><span class="co"><span style="color: #00BB00;">#&gt; </span>该矩阵适合用于 DESeq2 或 edgeR 进行差异表达分析。</span></span>
 <span><span class="co">#&gt; 零值比例在可接受范围内。</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; 每个样本的总 counts 值:</span></span>
@@ -191,48 +171,48 @@
 <span><span class="co">#&gt;   770  2149 </span></span>
 <span><span class="co">#&gt; 所有样本的总 counts 值在正常范围内。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 4. 缺失值检查</span></span>
-<span><span class="co">#&gt; --------</span></span>
-<span><span class="co">#&gt; 所有样本均无缺失值。</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 4. 缺失值检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; --------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>所有样本均无缺失值。</span></span>
 <span><span class="co">#&gt; 所有基因均无缺失值。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 5. 异常值检查</span></span>
-<span><span class="co">#&gt; --------</span></span>
-<span><span class="co">#&gt; 使用的阈值: IQR 方法的 1.5 倍</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 5. 异常值检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; --------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>使用的阈值: IQR 方法的 1.5 倍</span></span>
 <span><span class="co">#&gt; 所有样本的异常值比例在正常范围内。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 6. 样本相关性检查</span></span>
-<span><span class="co">#&gt; ----------</span></span>
-<span><span class="co">#&gt; 使用的阈值: 相关性 &lt; 0.7</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 6. 样本相关性检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ----------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>使用的阈值: 相关性 &lt; 0.7</span></span>
 <span><span class="co">#&gt; 所有样本之间的相关性良好。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 7. 基因表达水平检查</span></span>
-<span><span class="co">#&gt; -----------</span></span>
-<span><span class="co">#&gt; 使用的阈值: 基因平均表达水平 &lt; 1</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 7. 基因表达水平检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; -----------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>使用的阈值: 基因平均表达水平 &lt; 1</span></span>
 <span><span class="co">#&gt; 低表达基因比例在可接受范围内。</span></span>
 <span><span class="co">#&gt; 不存在零方差基因</span></span>
-<span><span class="co">#&gt; 8. 批次效应检查</span></span>
-<span><span class="co">#&gt; ---------</span></span>
-<span><span class="co">#&gt; 样本数量较少（&lt;=5），无法进行可靠的批次效应检查。</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 8. 批次效应检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ---------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>样本数量较少（&lt;=5），无法进行可靠的批次效应检查。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 9. Housekeeping 基因检查</span></span>
-<span><span class="co">#&gt; --------------------</span></span>
-<span><span class="co">#&gt; 未提供物种信息，无法进行 housekeeping 基因检查。</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 9. Housekeeping 基因检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; --------------------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>未提供物种信息，无法进行 housekeeping 基因检查。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 10. 变异系数检查</span></span>
-<span><span class="co">#&gt; ----------</span></span>
-<span><span class="co">#&gt; 高变异系数基因比例: 0.00% </span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 10. 变异系数检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ----------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>高变异系数基因比例: 0.00% </span></span>
 <span><span class="co">#&gt; 大多数基因的变异系数在正常范围内。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 优化建议</span></span>
-<span><span class="co">#&gt; ====</span></span>
-<span><span class="co">#&gt; 1.  对于 counts 矩阵，建议使用 DESeq2 或 edgeR 进行差异表达分析。 </span></span>
-<span><span class="co">#&gt; 2.  如需进行其他分析或绘图，建议将 counts 数据转换为 TPM 或 FPKM。 </span></span>
-<span><span class="co">#&gt; 3.  建议增加样本数量以进行更可靠的批次效应分析。 </span></span>
-<span><span class="co">#&gt; 4.  提供物种信息以进行 housekeeping 基因检查，可以更全面地评估数据质量。 </span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; 优化建议</span></span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; ====</span></span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; </span><span style="color: #00BB00; font-weight: bold;">1. </span> 对于 counts 矩阵，建议使用 DESeq2 或 edgeR 进行差异表达分析。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">2. </span> 如需进行其他分析或绘图，建议将 counts 数据转换为 TPM 或 FPKM。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">3. </span> 建议增加样本数量以进行更可靠的批次效应分析。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">4. </span> 提供物种信息以进行 housekeeping 基因检查，可以更全面地评估数据质量。 </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  检查报告生成完毕</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt;  <span style="color: #0000BB; font-weight: bold;">检查报告生成完毕</span></span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris</span></span>
 <span><span class="co">#&gt;     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species</span></span>
 <span><span class="co">#&gt; 1            5.1         3.5          1.4         0.2     setosa</span></span>
@@ -386,39 +366,40 @@
 <span><span class="co">#&gt; 149          6.2         3.4          5.4         2.3  virginica</span></span>
 <span><span class="co">#&gt; 150          5.9         3.0          5.1         1.8  virginica</span></span>
 <span></span>
-<span><span class="fu">autils</span><span class="fu">::</span><span class="fu"><a href="reference/check_expr.html">check_expr</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span><span class="fu">autils</span><span class="fu">::</span><span class="fu"><a href="../reference/check_expr.html">check_expr</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 基因表达矩阵全面检查报告</span></span>
-<span><span class="co">#&gt; ============</span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; 基因表达矩阵全面检查报告</span></span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; ============</span></span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; </span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 1. 基本信息</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; -------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>数据类型: data.frame </span></span>
+<span><span class="co">#&gt; 维度: 150 x 5 ( <span style="color: #00BB00;">150</span> 个基因, <span style="color: #00BB00;">5</span> 个样本)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 1. 基本信息</span></span>
-<span><span class="co">#&gt; -------</span></span>
-<span><span class="co">#&gt; 数据类型: data.frame </span></span>
-<span><span class="co">#&gt; 维度: 150 x 5 ( 150 个基因, 5 个样本)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 2. 数据类型和结构检查</span></span>
-<span><span class="co">#&gt; ------------</span></span>
-<span><span class="co">#&gt; 检测到行名，假定为基因ID。</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 2. 数据类型和结构检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ------------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>检测到行名，假定为基因ID。</span></span>
 <span><span class="co">#&gt; 检测到列名，假定为样本ID。</span></span>
 <span><span class="co">#&gt; ------------</span></span>
 <span><span class="co">#&gt; 基因名检查通过，无重复。</span></span>
 <span><span class="co">#&gt; 样本名检查通过，无重复。</span></span>
-<span><span class="co">#&gt; 警告: 存在非数值列。尝试转换为数值型...</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">警告: 存在非数值列。尝试转换为数值型...</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; </span></span></span>
 <span><span class="co">#&gt; Warning in autils::check_expr(iris): NAs introduced by coercion</span></span>
 <span><span class="co">#&gt; 所有列成功转换为数值型。</span></span>
 <span><span class="co">#&gt; 负值检查通过，无负值。</span></span>
 <span><span class="co">#&gt; 缺失值总数: 150 </span></span>
 <span><span class="co">#&gt; 缺失值比例: 20.00% </span></span>
-<span><span class="co">#&gt; 警告: 缺失值比例较高。</span></span>
-<span><span class="co">#&gt; 无全为NA的行。</span></span>
-<span><span class="co">#&gt; 警告: 存在全为NA的列。</span></span>
-<span><span class="co">#&gt; [1] "Species"</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">警告: 缺失值比例较高。</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; </span>无全为NA的行。</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">警告: 存在全为NA的列。</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; </span>[1] "Species"</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 3. 数据分布检查</span></span>
-<span><span class="co">#&gt; ---------</span></span>
-<span><span class="co">#&gt; 检测到非 counts 矩阵。</span></span>
-<span><span class="co">#&gt; 数据可能已经过对数转换，无需再次转换。</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 3. 数据分布检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ---------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span><span style="color: #BBBB00;">检测到非 counts 矩阵。</span></span></span>
+<span><span class="co"><span style="color: #BBBB00;">#&gt; </span><span style="color: #00BB00;">数据可能已经过对数转换，无需再次转换。</span></span></span>
+<span><span class="co"><span style="color: #00BB00;">#&gt; </span></span></span>
 <span><span class="co">#&gt; 样本的均值和中位数:</span></span>
 <span><span class="co">#&gt;                    Sample     Mean Median</span></span>
 <span><span class="co">#&gt; Sepal.Length Sepal.Length 5.843333   5.80</span></span>
@@ -426,12 +407,12 @@
 <span><span class="co">#&gt; Petal.Length Petal.Length 3.758000   4.35</span></span>
 <span><span class="co">#&gt; Petal.Width   Petal.Width 1.199333   1.30</span></span>
 <span><span class="co">#&gt; Species           Species      NaN     NA</span></span>
-<span><span class="co">#&gt; 警告: 以下样本的平均表达值显著低于中位数的一半:</span></span>
-<span><span class="co">#&gt; [1] "Petal.Width" NA           </span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">警告: 以下样本的平均表达值显著低于中位数的一半:</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">#&gt; </span>[1] "Petal.Width" NA           </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 4. 缺失值检查</span></span>
-<span><span class="co">#&gt; --------</span></span>
-<span><span class="co">#&gt; 每个样本的缺失值数量:</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 4. 缺失值检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; --------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>每个样本的缺失值数量:</span></span>
 <span><span class="co">#&gt; Species </span></span>
 <span><span class="co">#&gt;     150 </span></span>
 <span><span class="co">#&gt; 每个基因的缺失值数量:</span></span>
@@ -452,16 +433,16 @@
 <span><span class="co">#&gt; 141 142 143 144 145 146 147 148 149 150 </span></span>
 <span><span class="co">#&gt;   1   1   1   1   1   1   1   1   1   1 </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 5. 异常值检查</span></span>
-<span><span class="co">#&gt; --------</span></span>
-<span><span class="co">#&gt; 使用的阈值: IQR 方法的 1.5 倍</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 5. 异常值检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; --------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>使用的阈值: IQR 方法的 1.5 倍</span></span>
 <span><span class="co">#&gt; 所有样本的异常值比例在正常范围内。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 6. 样本相关性检查</span></span>
-<span><span class="co">#&gt; ----------</span></span>
-<span><span class="co">#&gt; 使用的阈值: 相关性 &lt; 0.7</span></span>
-<span><span class="co">#&gt; 注意: 存在相关性较低的样本对。</span></span>
-<span><span class="co">#&gt;              row col</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 6. 样本相关性检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ----------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>使用的阈值: 相关性 &lt; 0.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">注意: 存在相关性较低的样本对。</span></span></span>
+<span><span class="co"><span style="color: #BBBB00;">#&gt; </span>             row col</span></span>
 <span><span class="co">#&gt; Sepal.Width    2   1</span></span>
 <span><span class="co">#&gt; Sepal.Length   1   2</span></span>
 <span><span class="co">#&gt; Petal.Length   3   2</span></span>
@@ -469,74 +450,44 @@
 <span><span class="co">#&gt; Sepal.Width    2   3</span></span>
 <span><span class="co">#&gt; Sepal.Width    2   4</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 7. 基因表达水平检查</span></span>
-<span><span class="co">#&gt; -----------</span></span>
-<span><span class="co">#&gt; 使用的阈值: 基因平均表达水平 &lt; 1</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 7. 基因表达水平检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; -----------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>使用的阈值: 基因平均表达水平 &lt; 1</span></span>
 <span><span class="co">#&gt; 低表达基因比例在可接受范围内。</span></span>
 <span><span class="co">#&gt; 不存在零方差基因</span></span>
-<span><span class="co">#&gt; 8. 批次效应检查</span></span>
-<span><span class="co">#&gt; ---------</span></span>
-<span><span class="co">#&gt; 样本数量较少（&lt;=5），无法进行可靠的批次效应检查。</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 8. 批次效应检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ---------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>样本数量较少（&lt;=5），无法进行可靠的批次效应检查。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 9. Housekeeping 基因检查</span></span>
-<span><span class="co">#&gt; --------------------</span></span>
-<span><span class="co">#&gt; 未提供物种信息，无法进行 housekeeping 基因检查。</span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 9. Housekeeping 基因检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; --------------------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>未提供物种信息，无法进行 housekeeping 基因检查。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 10. 变异系数检查</span></span>
-<span><span class="co">#&gt; ----------</span></span>
-<span><span class="co">#&gt; 高变异系数基因比例: 0.00% </span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; 10. 变异系数检查</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; ----------</span></span></span>
+<span><span class="co"><span style="color: #00BBBB; font-weight: bold;">#&gt; </span>高变异系数基因比例: 0.00% </span></span>
 <span><span class="co">#&gt; 大多数基因的变异系数在正常范围内。</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 优化建议</span></span>
-<span><span class="co">#&gt; ====</span></span>
-<span><span class="co">#&gt; 1.  考虑对缺失值进行适当处理，如填充、删除或评估其对下游分析的影响。 </span></span>
-<span><span class="co">#&gt; 2.  检查并可能需要移除全为NA的样本列。 </span></span>
-<span><span class="co">#&gt; 3.  平均表达水平低的样本可能存在质量问题，需进一步检查。 </span></span>
-<span><span class="co">#&gt; 4.  存在缺失值的样本可能需要进行处理或移除。 </span></span>
-<span><span class="co">#&gt; 5.  存在缺失值的基因可能需要进行处理或移除。 </span></span>
-<span><span class="co">#&gt; 6.  检查相关性较低的样本对，考虑是否存在批次效应或样本异常。 </span></span>
-<span><span class="co">#&gt; 7.  建议增加样本数量以进行更可靠的批次效应分析。 </span></span>
-<span><span class="co">#&gt; 8.  提供物种信息以进行 housekeeping 基因检查，可以更全面地评估数据质量。 </span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; 优化建议</span></span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; ====</span></span></span>
+<span><span class="co"><span style="color: #0000BB; font-weight: bold;">#&gt; </span><span style="color: #00BB00; font-weight: bold;">1. </span> 考虑对缺失值进行适当处理，如填充、删除或评估其对下游分析的影响。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">2. </span> 检查并可能需要移除全为NA的样本列。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">3. </span> 平均表达水平低的样本可能存在质量问题，需进一步检查。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">4. </span> 存在缺失值的样本可能需要进行处理或移除。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">5. </span> 存在缺失值的基因可能需要进行处理或移除。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">6. </span> 检查相关性较低的样本对，考虑是否存在批次效应或样本异常。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">7. </span> 建议增加样本数量以进行更可靠的批次效应分析。 </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">8. </span> 提供物种信息以进行 housekeeping 基因检查，可以更全面地评估数据质量。 </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  检查报告生成完毕</span></span></code></pre></div>
-</div>
-</div>
+<span><span class="co">#&gt;  <span style="color: #0000BB; font-weight: bold;">检查报告生成完毕</span></span></span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="license">
-<h2 data-toc-skip>License</h2>
-<ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
-</ul>
+
+      </div>
+
 </div>
 
-
-<div class="citation">
-<h2 data-toc-skip>Citation</h2>
-<ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing autils</a></li>
-</ul>
-</div>
-
-<div class="developers">
-<h2 data-toc-skip>Developers</h2>
-<ul class="list-unstyled">
-<li>Fan Xing <br><small class="roles"> Author, maintainer </small>  </li>
-</ul>
-</div>
-
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/wt-tw-bio/autils/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/wt-tw-bio/autils/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://app.codecov.io/gh/wt-tw-bio/autils?branch=main" class="external-link"><img src="https://codecov.io/gh/wt-tw-bio/autils/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
-</ul>
-</div>
-
-  </div>
-</div>
 
 
       <footer><div class="copyright">

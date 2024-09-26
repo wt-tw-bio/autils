@@ -25,6 +25,16 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/introduction-RNA-seq-data-clean.html">introduction-RNA-seq-data-clean</a>
+    </li>
+  </ul></li>
       </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -72,6 +82,409 @@
     <p>Fan Xingfu</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 安装并加载必要的包</span></span></span>
+<span class="r-in"><span><span class="co"># install.packages("impute")</span></span></span>
+<span class="r-in"><span><span class="co"># install.packages("matrixStats")</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># 示例代码</span></span></span>
+<span class="r-in"><span><span class="va">cars</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    speed dist</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      4    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      4   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      7    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      7   22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      8   16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      9   10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     10   18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     10   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9     10   34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    11   17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11    11   28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12    12   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    12   20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14    12   24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15    12   28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16    13   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17    13   34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18    13   34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19    13   46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20    14   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21    14   36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22    14   60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23    14   80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24    15   20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25    15   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26    15   54</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27    16   32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28    16   40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29    17   32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30    17   40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31    17   50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32    18   42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33    18   56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34    18   76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35    18   84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36    19   36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37    19   46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38    19   68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39    20   32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40    20   48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41    20   52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42    20   56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43    20   64</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44    22   66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45    23   54</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46    24   70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47    24   92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48    24   93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49    24  120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50    25   85</span>
+<span class="r-in"><span><span class="fu">autils</span><span class="fu">::</span><span class="fu">check_expr</span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-weight: bold;">基因表达矩阵全面检查报告</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-weight: bold;">============</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">1. 基本信息</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">-------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 数据类型: data.frame </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 维度: 50 x 2 ( <span style="color: #00BB00;">50</span> 个基因, <span style="color: #00BB00;">2</span> 个样本)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">2. 数据类型和结构检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">------------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 检测到行名，假定为基因ID。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 检测到列名，假定为样本ID。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 基因名检查通过，无重复。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 样本名检查通过，无重复。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 所有列均为数值型。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 负值检查通过，无负值。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 无缺失值。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 无全为NA的行。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 无全为NA的列。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">3. 数据分布检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">---------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">检测到 counts 矩阵。</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 该矩阵适合用于 DESeq2 或 edgeR 进行差异表达分析。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 零值比例在可接受范围内。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 每个样本的总 counts 值:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> speed  dist </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   770  2149 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 所有样本的总 counts 值在正常范围内。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">4. 缺失值检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">--------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 所有样本均无缺失值。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 所有基因均无缺失值。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">5. 异常值检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">--------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 使用的阈值: IQR 方法的 1.5 倍</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 所有样本的异常值比例在正常范围内。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">6. 样本相关性检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">----------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 使用的阈值: 相关性 &lt; 0.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 所有样本之间的相关性良好。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">7. 基因表达水平检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">-----------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 使用的阈值: 基因平均表达水平 &lt; 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 低表达基因比例在可接受范围内。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 不存在零方差基因</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">8. 批次效应检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">---------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 样本数量较少（&lt;=5），无法进行可靠的批次效应检查。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">9. Housekeeping 基因检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">--------------------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 未提供物种信息，无法进行 housekeeping 基因检查。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">10. 变异系数检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">----------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 高变异系数基因比例: 0.00% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 大多数基因的变异系数在正常范围内。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-weight: bold;">优化建议</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-weight: bold;">====</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">1. </span> 对于 counts 矩阵，建议使用 DESeq2 或 edgeR 进行差异表达分析。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">2. </span> 如需进行其他分析或绘图，建议将 counts 数据转换为 TPM 或 FPKM。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">3. </span> 建议增加样本数量以进行更可靠的批次效应分析。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">4. </span> 提供物种信息以进行 housekeeping 基因检查，可以更全面地评估数据质量。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #0000BB; font-weight: bold;">检查报告生成完毕</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">iris</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            5.1         3.5          1.4         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            4.9         3.0          1.4         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            4.7         3.2          1.3         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            4.6         3.1          1.5         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            5.0         3.6          1.4         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5.4         3.9          1.7         0.4     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7            4.6         3.4          1.4         0.3     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8            5.0         3.4          1.5         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9            4.4         2.9          1.4         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10           4.9         3.1          1.5         0.1     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11           5.4         3.7          1.5         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12           4.8         3.4          1.6         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13           4.8         3.0          1.4         0.1     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14           4.3         3.0          1.1         0.1     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15           5.8         4.0          1.2         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16           5.7         4.4          1.5         0.4     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17           5.4         3.9          1.3         0.4     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18           5.1         3.5          1.4         0.3     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19           5.7         3.8          1.7         0.3     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20           5.1         3.8          1.5         0.3     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21           5.4         3.4          1.7         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22           5.1         3.7          1.5         0.4     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23           4.6         3.6          1.0         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24           5.1         3.3          1.7         0.5     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25           4.8         3.4          1.9         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26           5.0         3.0          1.6         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27           5.0         3.4          1.6         0.4     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28           5.2         3.5          1.5         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29           5.2         3.4          1.4         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30           4.7         3.2          1.6         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31           4.8         3.1          1.6         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32           5.4         3.4          1.5         0.4     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33           5.2         4.1          1.5         0.1     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34           5.5         4.2          1.4         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35           4.9         3.1          1.5         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36           5.0         3.2          1.2         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37           5.5         3.5          1.3         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38           4.9         3.6          1.4         0.1     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39           4.4         3.0          1.3         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40           5.1         3.4          1.5         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41           5.0         3.5          1.3         0.3     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42           4.5         2.3          1.3         0.3     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43           4.4         3.2          1.3         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44           5.0         3.5          1.6         0.6     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45           5.1         3.8          1.9         0.4     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46           4.8         3.0          1.4         0.3     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47           5.1         3.8          1.6         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48           4.6         3.2          1.4         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49           5.3         3.7          1.5         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50           5.0         3.3          1.4         0.2     setosa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51           7.0         3.2          4.7         1.4 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52           6.4         3.2          4.5         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53           6.9         3.1          4.9         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54           5.5         2.3          4.0         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55           6.5         2.8          4.6         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56           5.7         2.8          4.5         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57           6.3         3.3          4.7         1.6 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58           4.9         2.4          3.3         1.0 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59           6.6         2.9          4.6         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60           5.2         2.7          3.9         1.4 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61           5.0         2.0          3.5         1.0 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62           5.9         3.0          4.2         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63           6.0         2.2          4.0         1.0 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64           6.1         2.9          4.7         1.4 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65           5.6         2.9          3.6         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66           6.7         3.1          4.4         1.4 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67           5.6         3.0          4.5         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68           5.8         2.7          4.1         1.0 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69           6.2         2.2          4.5         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70           5.6         2.5          3.9         1.1 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71           5.9         3.2          4.8         1.8 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72           6.1         2.8          4.0         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73           6.3         2.5          4.9         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74           6.1         2.8          4.7         1.2 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75           6.4         2.9          4.3         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76           6.6         3.0          4.4         1.4 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77           6.8         2.8          4.8         1.4 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78           6.7         3.0          5.0         1.7 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79           6.0         2.9          4.5         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80           5.7         2.6          3.5         1.0 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81           5.5         2.4          3.8         1.1 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82           5.5         2.4          3.7         1.0 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83           5.8         2.7          3.9         1.2 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84           6.0         2.7          5.1         1.6 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85           5.4         3.0          4.5         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86           6.0         3.4          4.5         1.6 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87           6.7         3.1          4.7         1.5 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88           6.3         2.3          4.4         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89           5.6         3.0          4.1         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90           5.5         2.5          4.0         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91           5.5         2.6          4.4         1.2 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92           6.1         3.0          4.6         1.4 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93           5.8         2.6          4.0         1.2 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94           5.0         2.3          3.3         1.0 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95           5.6         2.7          4.2         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96           5.7         3.0          4.2         1.2 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97           5.7         2.9          4.2         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98           6.2         2.9          4.3         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99           5.1         2.5          3.0         1.1 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100          5.7         2.8          4.1         1.3 versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101          6.3         3.3          6.0         2.5  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 102          5.8         2.7          5.1         1.9  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 103          7.1         3.0          5.9         2.1  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 104          6.3         2.9          5.6         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105          6.5         3.0          5.8         2.2  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 106          7.6         3.0          6.6         2.1  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 107          4.9         2.5          4.5         1.7  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 108          7.3         2.9          6.3         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 109          6.7         2.5          5.8         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 110          7.2         3.6          6.1         2.5  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 111          6.5         3.2          5.1         2.0  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112          6.4         2.7          5.3         1.9  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113          6.8         3.0          5.5         2.1  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114          5.7         2.5          5.0         2.0  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115          5.8         2.8          5.1         2.4  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116          6.4         3.2          5.3         2.3  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117          6.5         3.0          5.5         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118          7.7         3.8          6.7         2.2  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 119          7.7         2.6          6.9         2.3  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120          6.0         2.2          5.0         1.5  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 121          6.9         3.2          5.7         2.3  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 122          5.6         2.8          4.9         2.0  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123          7.7         2.8          6.7         2.0  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124          6.3         2.7          4.9         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 125          6.7         3.3          5.7         2.1  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 126          7.2         3.2          6.0         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 127          6.2         2.8          4.8         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 128          6.1         3.0          4.9         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 129          6.4         2.8          5.6         2.1  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 130          7.2         3.0          5.8         1.6  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 131          7.4         2.8          6.1         1.9  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 132          7.9         3.8          6.4         2.0  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 133          6.4         2.8          5.6         2.2  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 134          6.3         2.8          5.1         1.5  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 135          6.1         2.6          5.6         1.4  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 136          7.7         3.0          6.1         2.3  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 137          6.3         3.4          5.6         2.4  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 138          6.4         3.1          5.5         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 139          6.0         3.0          4.8         1.8  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140          6.9         3.1          5.4         2.1  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 141          6.7         3.1          5.6         2.4  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 142          6.9         3.1          5.1         2.3  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 143          5.8         2.7          5.1         1.9  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144          6.8         3.2          5.9         2.3  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145          6.7         3.3          5.7         2.5  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 146          6.7         3.0          5.2         2.3  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 147          6.3         2.5          5.0         1.9  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 148          6.5         3.0          5.2         2.0  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 149          6.2         3.4          5.4         2.3  virginica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 150          5.9         3.0          5.1         1.8  virginica</span>
+<span class="r-in"><span><span class="fu">autils</span><span class="fu">::</span><span class="fu">check_expr</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-weight: bold;">基因表达矩阵全面检查报告</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-weight: bold;">============</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">1. 基本信息</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">-------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 数据类型: data.frame </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 维度: 150 x 5 ( <span style="color: #00BB00;">150</span> 个基因, <span style="color: #00BB00;">5</span> 个样本)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">2. 数据类型和结构检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">------------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 检测到行名，假定为基因ID。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 检测到列名，假定为样本ID。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 基因名检查通过，无重复。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 样本名检查通过，无重复。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">警告: 存在非数值列。尝试转换为数值型...</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NAs introduced by coercion</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 所有列成功转换为数值型。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 负值检查通过，无负值。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 缺失值总数: 150 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 缺失值比例: 20.00% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">警告: 缺失值比例较高。</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 无全为NA的行。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">警告: 存在全为NA的列。</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Species"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">3. 数据分布检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">---------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">检测到非 counts 矩阵。</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">数据可能已经过对数转换，无需再次转换。</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 样本的均值和中位数:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    Sample     Mean Median</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sepal.Length Sepal.Length 5.843333   5.80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sepal.Width   Sepal.Width 3.057333   3.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Petal.Length Petal.Length 3.758000   4.35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Petal.Width   Petal.Width 1.199333   1.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Species           Species      NaN     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">警告: 以下样本的平均表达值显著低于中位数的一半:</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Petal.Width" NA           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">4. 缺失值检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">--------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 每个样本的缺失值数量:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Species </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     150 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 每个基因的缺失值数量:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 141 142 143 144 145 146 147 148 149 150 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1   1   1   1   1   1   1   1   1   1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">5. 异常值检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">--------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 使用的阈值: IQR 方法的 1.5 倍</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 所有样本的异常值比例在正常范围内。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">6. 样本相关性检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">----------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 使用的阈值: 相关性 &lt; 0.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">注意: 存在相关性较低的样本对。</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              row col</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sepal.Width    2   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sepal.Length   1   2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Petal.Length   3   2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Petal.Width    4   2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sepal.Width    2   3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sepal.Width    2   4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">7. 基因表达水平检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">-----------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 使用的阈值: 基因平均表达水平 &lt; 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 低表达基因比例在可接受范围内。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 不存在零方差基因</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">8. 批次效应检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">---------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 样本数量较少（&lt;=5），无法进行可靠的批次效应检查。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">9. Housekeeping 基因检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">--------------------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 未提供物种信息，无法进行 housekeeping 基因检查。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">10. 变异系数检查</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB; font-weight: bold;">----------</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 高变异系数基因比例: 0.00% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 大多数基因的变异系数在正常范围内。</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-weight: bold;">优化建议</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-weight: bold;">====</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">1. </span> 考虑对缺失值进行适当处理，如填充、删除或评估其对下游分析的影响。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">2. </span> 检查并可能需要移除全为NA的样本列。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">3. </span> 平均表达水平低的样本可能存在质量问题，需进一步检查。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">4. </span> 存在缺失值的样本可能需要进行处理或移除。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">5. </span> 存在缺失值的基因可能需要进行处理或移除。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">6. </span> 检查相关性较低的样本对，考虑是否存在批次效应或样本异常。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">7. </span> 建议增加样本数量以进行更可靠的批次效应分析。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">8. </span> 提供物种信息以进行 housekeeping 基因检查，可以更全面地评估数据质量。 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #0000BB; font-weight: bold;">检查报告生成完毕</span> </span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
