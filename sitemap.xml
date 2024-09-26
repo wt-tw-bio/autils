@@ -1,0 +1,17 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/a.html</loc></url>
+<url><loc>/reference/autoproxy_run.html</loc></url>
+<url><loc>/reference/check_expr.html</loc></url>
+<url><loc>/reference/filter_impute_invalid.html</loc></url>
+<url><loc>/reference/get_outlier_sample.html</loc></url>
+<url><loc>/reference/group_by_median.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/proxy_run.html</loc></url>
+<url><loc>/reference/remove_duplicates_func.html</loc></url>
+</urlset>
+
